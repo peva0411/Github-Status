@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="githubStatusApp" data-ng-csp="" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Github Status</title>
+        <link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link  rel="stylesheet" href="css/main.css"/>
+    </head>
+<body>
+        <div ng-controller="MainCtrl">
+            <div class="container">
+                <div class="row">
+                    <img class="img-header center-block" src="./img/GitHub-Mark-120px-plus.png"/>
+                </div>
+                <div class="row">
+                    <div class="jumbotron duration-container">
+                        <p class="subTitle">It's been</p>
+                        <span class="duration-number">{{duration.days}}</span> days
+                        <span class="duration-number">{{duration.hours}}</span> hours
+                        <span class="duration-number">{{duration.minutes}}</span> minutes
+                        <span class="duration-number duration-number-small">{{duration.seconds}}</span> seconds
+                        <p class="subTitle">Since your last GitHub push...</p>
+                    </div>
+                </div>
+            </div>
+        
+            <footer class="footer">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img class="img-circle img-user" src="{{event.actor.avatar_url}}" />
+                            </div>
+                            <div class="col-md-10">
+                                {{event.actor.login}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+    </div>
+    <script src="./js/vendor/angular.min.js"></script>
+    <script src="./js/vendor/angular-route.min.js"></script>
+    <script src="./js/vendor/moment.min.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
