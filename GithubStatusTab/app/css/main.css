@@ -43,3 +43,8 @@
 .subTitle {
     text-align: center;
 }
+
+#navBar>a {
+    color: #ffffff;
+    font-size: 2em;
+}
