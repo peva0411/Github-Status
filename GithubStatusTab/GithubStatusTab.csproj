@@ -41,28 +41,34 @@
     <Content Include="app\css\angular-csp.css" />
     <Content Include="app\css\bootstrap.min.css" />
     <Content Include="app\css\main.css" />
-    <Content Include="app\img\icon.png" />
+    <Content Include="app\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\img\GitHub-Mark-120px-plus.png" />
+    <Content Include="app\img\GitHub-Mark-32px.png" />
     <Content Include="app\js\app.js" />
     <Content Include="app\js\vendor\angular-route.min.js" />
     <Content Include="app\js\vendor\angular.min.js" />
+    <Content Include="app\js\vendor\moment.min.js" />
     <Content Include="app\popup.html" />
     <Content Include="app\popup.js" />
     <Content Include="app\tab.html" />
+    <Content Include="app\templates\home.html" />
+    <Content Include="app\templates\settings.html" />
     <Content Include="Properties\build\lib\Ionic.Zip.DLL" />
     <Content Include="Properties\build\lib\MSBuild.ExtensionPack.dll" />
     <Content Include="screenshots\screenshot.png" />
     <Content Include="index.htm" />
     <Content Include="Properties\build\ligershark.chrome.targets" />
     <Content Include="screenshots\readme.txt" />
+    <Content Include="app\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="app\fonts\glyphicons-halflings-regular.woff" />
     <None Include="scripts\_references.js" />
     <None Include="scripts\chrome-api-vsdoc.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\manifest.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\templates\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
