@@ -8,7 +8,7 @@
     }).otherwise({redirectsTo:'/'});
 });
 
-app.controller('MainCtrl',['$scope', '$timeout', 'EventService', 'DurationService', 'UserService', function($scope, $timeout, eventService, durationService, userService) {
+app.controller('MainCtrl',['$scope', '$timeout', 'GithubService', 'DurationService', 'UserService', function($scope, $timeout, githubService, durationService, userService) {
 
     $scope.getMostRecentEvent = function (user) {
         var startTime = new Date();
@@ -25,7 +25,7 @@ app.controller('MainCtrl',['$scope', '$timeout', 'EventService', 'DurationServic
 
             if (diff > 60000) {
                 startTime = new Date();
-                eventService.getEvents(user)
+                githubService.getEvents(user)
                     .then(updateEvents)
                     .catch(function (reason) { alert(reason); });
             } else {
@@ -34,7 +34,7 @@ app.controller('MainCtrl',['$scope', '$timeout', 'EventService', 'DurationServic
             }
         };
 
-        eventService.getEvents(user)
+        githubService.getEvents(user)
             .then(updateEvents)
             .catch(function (reason) {
                 alert(reason);
@@ -42,43 +42,56 @@ app.controller('MainCtrl',['$scope', '$timeout', 'EventService', 'DurationServic
     };
     
     if (userService.user) {
-        console.log(userService.user);
-        $scope.getMostRecentEvent(userService.user.name);
+        $scope.getMostRecentEvent(userService.user.login);
     }
-
 }]);
 
 
 app.controller('SettingsCtrl', [
-    '$scope', 'UserService', function($scope, userService) {
-
-        $scope.user = userService.user;
+    '$scope', 'UserService', 'GithubService', function($scope, userService, githubService) {
 
         $scope.save = function () {
-            userService.save();
+            //get userobject from github service
+            githubService.getUser($scope.userName)
+                .then(function (data) {
+                     userService.save(data);
+            }).catch(function(error) {
+                alert(error);
+            });
         };
     }
 ]);
 
-app.factory('EventService', ['$q', "$http", function ($q, $http) {
+app.factory('GithubService', ['$q', "$http", function ($q, $http) {
 
-    var apiEndpoint = "https://api.github.com/users/";
+    var apiEndpoint = "https://api.github.com/users";
+
+    var getGithubData = function(user, route) {
+        var defered = $q.defer();
+
+        var requestUrl = [apiEndpoint, user].join('/');
+
+        if (route.length > 0)
+            requestUrl += "/" + route;
+
+        $http.get(requestUrl)
+            .success(function(data) {
+                defered.resolve(data);
+            })
+            .error(function(reason) {
+                defered.reject(reason);
+            });
+
+        return defered.promise;
+
+    };
 
     return {
-        getEvents: function(user) {
-            var defered = $q.defer();
-
-            var requestUrl = apiEndpoint + user + '/events';
-
-            $http.get(requestUrl)
-                .success(function(data) {
-                    defered.resolve(data);
-                })
-                .error(function(reason) {
-                    defered.reject(reason);
-                });
-
-            return defered.promise;
+        getEvents: function (user) {
+            return getGithubData(user, 'events');
+        },
+        getUser:function(user) {
+            return getGithubData(user, '');
         }
     };
 }]);
@@ -105,22 +118,20 @@ app.factory('DurationService', function() {
 });
 
 
-app.factory('UserService', function() {
-    var defaults = {
-        name: 'peva0411'
-    };
+app.factory('UserService', [function() {
 
     var service = {
         user: {},
-        save: function() {
-            sessionStorage.githubStatus = angular.toJson(service.user);
+        save: function (githubUser) {
+           service.user = githubUser;
+           localStorage.githubStatus = angular.toJson(githubUser);
         },
         restore: function() {
-            service.user = angular.fromJson(sessionStorage.user) || defaults;
+            service.user = angular.fromJson(localStorage.githubStatus);
             return service.user;
         }
     };
 
     service.restore();
     return service;
-});
+}]);
