@@ -48,13 +48,14 @@ app.controller('MainCtrl',['$scope', '$timeout', 'GithubService', 'DurationServi
 
 
 app.controller('SettingsCtrl', [
-    '$scope', 'UserService', 'GithubService', function($scope, userService, githubService) {
+    '$scope', '$location', 'UserService', 'GithubService', function($scope, $location, userService, githubService) {
 
         $scope.save = function () {
             //get userobject from github service
             githubService.getUser($scope.userName)
                 .then(function (data) {
-                     userService.save(data);
+                    userService.save(data);
+                    $location.path('/');
             }).catch(function(error) {
                 alert(error);
             });
