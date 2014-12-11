@@ -1,50 +1,75 @@
 ﻿body {
-    font-family: anton;
+	font-family: anton;
 }
 
 
 .duration-number {
-    padding: 5px;
-    font-size: 8em;
+	padding: 5px;
+	font-size: 8em;
 }
 
 .duration-number-small {
-    font-size: 4em;
+	font-size: 4em;
 }
 
 
 .duration-container {
-    text-align: center;
-    margin-top: 100px;
-    padding: 25px;
+	text-align: center;
+	margin-top: 100px;
+	padding: 25px;
 }
 
 .img-user {
-    height: 50px;
+	height: 50px;
 }
 
 .img-header {
-    margin-top: 15px;
+	margin-top: 15px;
 }
 
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 80px;
-    background-color: #4e5d6c;
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	height: 80px;
+	background-color: #4e5d6c;
 }
 
 .footer > .row {
-    margin-right: 0px;
+	margin-right: 0px;
 }
 
 .subTitle {
-    text-align: center;
+	text-align: center;
+}
+
+.subTitle-bottom {
+	margin-top: 35px;
 }
 
 #navBar>a {
-    color: #ffffff;
-    font-size: 2em;
+	color: #ffffff;
+	font-size: 2em;
+}
+
+
+
+@media(min-width: 991px) {
+
+	.seperator {
+		border-right: 1px solid;
+	}    
+}
+
+@media(max-width: 990px) {
+
+	.footer {
+		position: fixed;
+	}
+
+	.seperator {
+		border-bottom: 1px solid;
+		padding-bottom: 10px;
+	}
 }

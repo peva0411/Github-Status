@@ -1,13 +1,46 @@
-﻿<div class="row">
+﻿
+<div class="row">
+    <div class="col-md-2">
+        <user-info user="user"></user-info>
+    </div>
+</div>
+<div class="row">
     <img class="img-header center-block" src="./img/GitHub-Mark-120px-plus.png" />
 </div>
 <div class="row">
     <div class="jumbotron duration-container">
-        <p class="subTitle">It's been</p>
-        <span class="duration-number">{{duration.days}}</span> days
-        <span class="duration-number">{{duration.hours}}</span> hours
-        <span class="duration-number">{{duration.minutes}}</span> minutes
-        <span class="duration-number duration-number-small">{{duration.seconds}}</span> seconds
-        <p class="subTitle">Since your last GitHub activity...</p>
+        <div ng-show="user">
+            <div class="row">
+                <p class="subTitle">It's been</p>
+            </div>
+            <div class="row">
+
+                <div class="col-md-2 col-md-offset-2 seperator">
+                    <span class="duration-number ">{{duration.days | numberFixedLen: 2 }}</span>
+                    <div>days</div>
+                </div>
+                <div class="col-md-2 seperator">
+                    <span class="duration-number ">{{duration.hours| numberFixedLen:2}}</span>
+                    <div>hours</div>
+                </div>
+                <div class="col-md-2 seperator">
+                    <span class="duration-number ">{{duration.minutes | numberFixedLen:2}}</span>
+                    <div>minutes</div>
+                </div>
+                <div class="col-md-2">
+                    <span class="duration-number">{{duration.seconds | numberFixedLen:2}}</span>
+                    <div>seconds</div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <p class="subTitle subTitle-bottom">Since your last GitHub activity...</p>
+            </div>
+        </div>
+    <div ng-hide="user">
+        Please enter your GitHub <a href="#/settings">user name</a>.
     </div>
+
+</div>
 </div>

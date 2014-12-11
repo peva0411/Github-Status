@@ -5,7 +5,7 @@
     "description": "Status of Github account in start up tab",
     "version": "1.0",
 
-    "permissions": ["storage"],
+    "permissions": ["storage", "https://avatars.githubusercontent.com"],
     "background": {
         "scripts": [ "js/vendor/angular.min.js" ]
     },

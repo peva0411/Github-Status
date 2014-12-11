@@ -5,39 +5,42 @@
         <title>Github Status</title>
         <link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/angular-csp.css" />
         <link  rel="stylesheet" href="css/main.css"/>
     </head>
 <body>
-       
-            <div class="container">
-               <div ng-view></div>
-            </div>
-        
-            <footer class="footer">
-                <div class="row">
-                   <!-- <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <img class="img-circle img-user" src="{{event.actor.avatar_url}}" />
-                            </div>
-                            <div class="col-md-10">
-                                {{event.actor.login}}
-                            </div>
-                        </div>
-                    </div>-->
-                    
-                    <ul name="navBar" class="list-inline pull-right">
-                        <li><a class="glyphicon glyphicon-home" href="#/"></a></li>
-                        <li><a class="glyphicon glyphicon-cog" href="#/settings"></a></li>
-                    </ul>
-                </div>
 
-            </footer>
+    <div class="container">
+      <div ng-view></div>
+    </div>
 
-    
+    <footer class="navbar navbar-static-top">
+        <div class="row">
+            <!-- <div class="col-md-3">
+                 <div class="row">
+                     <div class="col-md-2">
+                         <img class="img-circle img-user" src="{{event.actor.avatar_url}}" />
+                     </div>
+                     <div class="col-md-10">
+                         {{event.actor.login}}
+                     </div>
+                 </div>
+             </div>-->
+
+            <ul name="navBar" class="list-inline pull-right">
+                <li><a class="glyphicon glyphicon-home" href="#/"></a></li>
+                <li><a class="glyphicon glyphicon-cog" href="#/settings"></a></li>
+            </ul>
+        </div>
+
+    </footer>
+
+
     <script src="./js/vendor/angular.min.js"></script>
     <script src="./js/vendor/angular-route.min.js"></script>
     <script src="./js/vendor/moment.min.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./js/filters/numberFixedLen.js"></script>
+    <script src="./js/directives/userInfo.js"></script>
 </body>
 </html>
