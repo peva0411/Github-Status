@@ -39,14 +39,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app\css\angular-csp.css" />
+    <Content Include="app\css\animate.css" />
     <Content Include="app\css\bootstrap.min.css" />
     <Content Include="app\css\main.css" />
     <Content Include="app\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="app\img\GitHub-Mark-120px-plus.png" />
     <Content Include="app\img\GitHub-Mark-32px.png" />
     <Content Include="app\js\app.js" />
+    <Content Include="app\js\directives\pluralize.js" />
     <Content Include="app\js\directives\userInfo.js" />
     <Content Include="app\js\filters\numberFixedLen.js" />
+    <Content Include="app\js\services\alertService.js" />
     <Content Include="app\js\vendor\angular-route.min.js" />
     <Content Include="app\js\vendor\angular.min.js" />
     <Content Include="app\js\vendor\moment.min.js" />
@@ -73,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\js\controllers\" />
-    <Folder Include="app\js\services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

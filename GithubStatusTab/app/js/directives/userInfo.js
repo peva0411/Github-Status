@@ -12,9 +12,6 @@
 
             $scope.user = UserService.user;
 
-            //if (UserService.user) {
-            //    $scope.hasUser = true;
-            //}
         }
 
     };

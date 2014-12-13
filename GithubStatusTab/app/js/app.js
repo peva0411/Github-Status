@@ -35,7 +35,14 @@ app.controller('MainCtrl',['$scope', '$timeout', 'GithubService', 'DurationServi
         };
 
         githubService.getEvents(user)
-            .then(updateEvents)
+            .then(function (events) {
+                if (events.length > 0) {
+                    $scope.hasEvents = true;
+                    updateEvents(events);
+                } else {
+                    $scope.hasEvents = false;
+                }
+            })
             .catch(function (reason) {
                 alert(reason);
             });
@@ -48,16 +55,17 @@ app.controller('MainCtrl',['$scope', '$timeout', 'GithubService', 'DurationServi
 
 
 app.controller('SettingsCtrl', [
-    '$scope', '$location', 'UserService', 'GithubService', function($scope, $location, userService, githubService) {
-
+    '$scope', '$location', 'UserService', 'GithubService', 'alert', function($scope, $location, userService, githubService, alert) {
         $scope.save = function () {
             //get userobject from github service
             githubService.getUser($scope.userName)
                 .then(function (data) {
                     userService.save(data);
+                    alert('success', data.login + " successfully added!");
                     $location.path('/');
-            }).catch(function(error) {
-                alert(error);
+                }).catch(function (error) {
+                userService.user = {};
+                alert('danger', "GitHub Api Exception", error.message);
             });
         };
     }

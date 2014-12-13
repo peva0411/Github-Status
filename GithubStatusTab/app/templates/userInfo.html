@@ -1,8 +1,11 @@
 ﻿
 <div ng-show="user">
-    <div class="well well-sm">
 
-        <img class="img img-circle" style="height: 50px" ng-src="{{user.avatar_url}}"/>
-        {{user.login}}
-    </div>
+    <a ng-href="https://github.com/{{user.login}}" class="navbar-brand">   
+      
+        <div>
+            <img class="img img-circle" style="height: 50px" ng-src="{{user.avatar_url}}" />
+            <span>{{user.login}}</span>
+        </div>
+    </a>
 </div>
