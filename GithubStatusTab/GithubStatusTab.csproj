@@ -46,10 +46,13 @@
     <Content Include="app\img\GitHub-Mark-120px-plus.png" />
     <Content Include="app\img\GitHub-Mark-32px.png" />
     <Content Include="app\js\app.js" />
+    <Content Include="app\js\controllers\MainCtrl.js" />
+    <Content Include="app\js\controllers\SettingsCtrl.js" />
     <Content Include="app\js\directives\pluralize.js" />
     <Content Include="app\js\directives\userInfo.js" />
     <Content Include="app\js\filters\numberFixedLen.js" />
     <Content Include="app\js\services\alertService.js" />
+    <Content Include="app\js\services\DurationService.js" />
     <Content Include="app\js\vendor\angular-route.min.js" />
     <Content Include="app\js\vendor\angular.min.js" />
     <Content Include="app\js\vendor\moment.min.js" />
@@ -59,6 +62,7 @@
     <Content Include="app\templates\home.html" />
     <Content Include="app\templates\settings.html" />
     <Content Include="app\templates\userInfo.html" />
+    <Content Include="test\karma.conf.js" />
     <Content Include="Properties\build\lib\Ionic.Zip.DLL" />
     <Content Include="Properties\build\lib\MSBuild.ExtensionPack.dll" />
     <Content Include="screenshots\screenshot.png" />
@@ -68,15 +72,17 @@
     <Content Include="app\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="app\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="app\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="test\lib\angular-mocks.js" />
+    <Content Include="test\unit\DurationService.spec.js" />
+    <Content Include="test\unit\numberFixedLen.spec.js" />
+    <Content Include="test\unit\SettingsCtrl.spec.js" />
     <None Include="scripts\_references.js" />
     <None Include="scripts\chrome-api-vsdoc.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\manifest.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\js\controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
