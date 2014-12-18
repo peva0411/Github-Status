@@ -1,5 +1,5 @@
 ﻿angular.module('githubStatusApp')
-    .controller('MainCtrl', ['$scope', '$timeout', 'GithubService', 'DurationService', 'UserService', 'alert', function ($scope, $timeout, githubService, durationService, userService, alert) {
+    .controller('MainCtrl', ['$scope', '$timeout', 'GithubService', 'DurationService', 'UserService', 'alertService', function ($scope, $timeout, githubService, durationService, userService, alertService) {
 
     $scope.getMostRecentEvent = function (user) {
         $scope.isLoading = true;
@@ -20,7 +20,7 @@
                 startTime = new Date();
                 githubService.getEvents(user)
                     .then(updateEvents)
-                    .catch(function (reason) { alert(reason); });
+                    .catch(function (reason) { alertService.alert('danger','', reason.message); });
             } else {
                 $scope.duration = durationService.getDuration(new Date(), $scope.event.created_at);
                 $timeout(updateTime, 1000);
@@ -37,7 +37,7 @@
                 }
             })
             .catch(function (reason) {
-                alert('danger', '', reason);
+                alertService.alert('danger', '', reason);
             }).finally(function () {
                 $scope.isLoading = false;
             });
