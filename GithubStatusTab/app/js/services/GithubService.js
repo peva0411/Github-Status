@@ -1,4 +1,5 @@
-﻿angular.module('githubStatusApp').factory('GithubService', ['$q', "$http", function ($q, $http) {
+﻿angular.module('githubStatusApp')
+    .factory('GithubService', ['$q', "$http", function ($q, $http) {
 
     var apiEndpoint = "https://api.github.com/users";
 
@@ -14,7 +15,7 @@
             .success(function (data) {
                 defered.resolve(data);
             })
-            .error(function (reason) {
+            .catch(function(reason) {
                 defered.reject(reason);
             });
 

@@ -13,7 +13,6 @@ describe('alertService', function() {
         $rootScope = _$rootScope_.$new();
 
         $timeout = _$timeout_;
-        console.log(_alertService_);
         alertService = _alertService_;
 
     }));
@@ -22,7 +21,6 @@ describe('alertService', function() {
 
         it('should add alert object to rootscope with correct type', function() {
             alertService.alert("warning", "title", "message");
-
             expect($rootScope.alert.type).toEqual("warning");
         });
 
@@ -48,9 +46,7 @@ describe('alertService', function() {
 
         it('should change show to false after timeout', function() {
             alertService.alert('warning', 'title', 'message');
-
             $timeout.flush();
-
             expect($rootScope.alert.show).toBeFalsy();
 
         });
