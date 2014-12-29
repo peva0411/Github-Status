@@ -1,0 +1,17 @@
+{
+  "name": "GithubStatusTab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "karma.conf.js",
+  "dependencies": {
+    "karma": "^0.12.28"
+  },
+  "devDependencies": {
+    "karma": "^0.12.28"
+  },
+  "scripts": {
+    "test": "karma"
+  },
+  "author": "",
+  "license": "ISC"
+}
